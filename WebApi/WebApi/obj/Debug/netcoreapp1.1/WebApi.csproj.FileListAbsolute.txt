@@ -1,0 +1,6 @@
+D:\projects\WebApi\WebApi\WebApi\bin\Debug\netcoreapp1.1\WebApi.deps.json
+D:\projects\WebApi\WebApi\WebApi\bin\Debug\netcoreapp1.1\WebApi.runtimeconfig.json
+D:\projects\WebApi\WebApi\WebApi\bin\Debug\netcoreapp1.1\WebApi.runtimeconfig.dev.json
+D:\projects\WebApi\WebApi\WebApi\bin\Debug\netcoreapp1.1\WebApi.dll
+D:\projects\WebApi\WebApi\WebApi\obj\Debug\netcoreapp1.1\WebApi.csprojResolveAssemblyReference.cache
+D:\projects\WebApi\WebApi\WebApi\obj\Debug\netcoreapp1.1\WebApi.AssemblyInfo.cs
