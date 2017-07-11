@@ -4,3 +4,6 @@ D:\projects\WebApi\WebApi\WebApi\bin\Debug\netcoreapp1.1\WebApi.runtimeconfig.de
 D:\projects\WebApi\WebApi\WebApi\bin\Debug\netcoreapp1.1\WebApi.dll
 D:\projects\WebApi\WebApi\WebApi\obj\Debug\netcoreapp1.1\WebApi.csprojResolveAssemblyReference.cache
 D:\projects\WebApi\WebApi\WebApi\obj\Debug\netcoreapp1.1\WebApi.AssemblyInfo.cs
+D:\projects\WebApi\WebApi\WebApi\bin\Debug\netcoreapp1.1\WebApi.pdb
+D:\projects\WebApi\WebApi\WebApi\obj\Debug\netcoreapp1.1\WebApi.dll
+D:\projects\WebApi\WebApi\WebApi\obj\Debug\netcoreapp1.1\WebApi.pdb
