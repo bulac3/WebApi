@@ -1,0 +1,9 @@
+D:\projects\WebApi\WebApi\CoolMap\bin\Debug\netcoreapp1.1\CoolMap.deps.json
+D:\projects\WebApi\WebApi\CoolMap\bin\Debug\netcoreapp1.1\CoolMap.runtimeconfig.json
+D:\projects\WebApi\WebApi\CoolMap\bin\Debug\netcoreapp1.1\CoolMap.runtimeconfig.dev.json
+D:\projects\WebApi\WebApi\CoolMap\bin\Debug\netcoreapp1.1\CoolMap.dll
+D:\projects\WebApi\WebApi\CoolMap\bin\Debug\netcoreapp1.1\CoolMap.pdb
+D:\projects\WebApi\WebApi\CoolMap\obj\Debug\netcoreapp1.1\CoolMap.csprojResolveAssemblyReference.cache
+D:\projects\WebApi\WebApi\CoolMap\obj\Debug\netcoreapp1.1\CoolMap.AssemblyInfo.cs
+D:\projects\WebApi\WebApi\CoolMap\obj\Debug\netcoreapp1.1\CoolMap.dll
+D:\projects\WebApi\WebApi\CoolMap\obj\Debug\netcoreapp1.1\CoolMap.pdb

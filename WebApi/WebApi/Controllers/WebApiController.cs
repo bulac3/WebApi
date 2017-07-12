@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.DAL;
 using WebApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 namespace WebApi.Controllers
 {
+    [EnableCors("SiteCorsPolicy")]
     [Route("api/[controller]")]
     public class WebApiController : Controller
     {
