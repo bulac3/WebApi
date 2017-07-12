@@ -2,3 +2,7 @@
 <ul *ngFor="let value of apiValues">
   <li>{{value}}</li>
 </ul>
+
+<agm-map *ngFor="let value of apiValues">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
