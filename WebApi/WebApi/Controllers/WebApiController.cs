@@ -17,12 +17,6 @@ namespace WebApi.Controllers
         public WebApiController(WebApiContext context)
         {
             _context = context;
-
-            if (_context.Items.Count() == 0)
-            {
-                _context.Items.Add(new Item { Name = "Item1", Description = "Description1" });
-                _context.SaveChanges();
-            }
         }
 
         [HttpGet]
@@ -62,6 +56,7 @@ namespace WebApi.Controllers
             {
                 return NotFound();
             }
+
             return new ObjectResult(item);
         }
 
