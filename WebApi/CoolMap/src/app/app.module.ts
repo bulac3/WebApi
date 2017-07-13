@@ -7,11 +7,18 @@ import { HttpModule } from '@angular/http';
 
 import { AgmCoreModule } from '@agm/core';
 
+import { BsDropdownModule } from 'ngx-bootstrap';
+
+import { CategoryComponent } from '../components/category.component'
+
+
 @NgModule({
   declarations: [
-    AppComponent
+      AppComponent,
+      CategoryComponent
   ],
   imports: [
+      BsDropdownModule.forRoot(),
       BrowserModule,
       FormsModule,
       HttpModule,

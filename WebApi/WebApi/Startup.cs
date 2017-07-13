@@ -33,7 +33,9 @@ namespace WebApi
             services.AddDbContext<WebApiContext>(opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("WebApiDatabase")));
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(
+                options => options.SerializerSettings.ReferenceLoopHandling = 
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             var corsBuilder = new CorsPolicyBuilder();
             corsBuilder.AllowAnyHeader();

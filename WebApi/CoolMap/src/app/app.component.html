@@ -1,13 +1,7 @@
-﻿<h1>Application says what?</h1>
-
-
-<ul *ngFor="let value of values">
-  <li>{{value.latitude}}</li>
-</ul>
+﻿<category></category>
 
 <agm-map [latitude]="screenLatitude" [longitude]="screenLongitude" (mapClick)="mapClicked($event)">
   <agm-marker *ngFor="let value of values" [latitude]="value.latitude" [longitude]="value.longitude"></agm-marker>
   <agm-marker *ngIf="clickLatitude" [latitude]="value.latitude" [longitude]="value.longitude"></agm-marker>
   <agm-marker *ngFor="let m of markers" [latitude]="m.latitude" [longitude]="m.longitude"></agm-marker>
-
 </agm-map>
