@@ -1,8 +1,10 @@
 ﻿<category-filter></category-filter>
 <button type="button" class="btn btn-primary" (click)="onFilter()">Filter</button>
 <div class="row no-gutters">
-  <div class="col-sm-2">
-    Name: {{name}}
+  <div class="col-sm-3">
+    <b>Name:</b> <span *ngIf="selectedItem !== undefined">{{selectedItem.name}}</span>
+    <hr>
+    <b>Description:</b> <span *ngIf="selectedItem !== undefined">{{selectedItem.description}}</span>
   </div>
   <div class="col">
     <cool-map (markerSelected)="markerSelected($event)"></cool-map>

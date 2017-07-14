@@ -48,6 +48,12 @@ export class AppComponent implements OnInit {
     }
 
     markerSelected(id) {
-        console.log(id);
+        let url = `${environment.apiUrl}/${id}`;
+        this._httpService.get(url)
+            .map((response: Response) => <Item>response.json())
+            .subscribe(item => {
+                this.selectedItem = item;
+            });
     }
+    
 }
