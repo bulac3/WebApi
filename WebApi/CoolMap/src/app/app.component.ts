@@ -1,38 +1,53 @@
-﻿import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http'
+﻿import { Component, OnInit, ViewChild } from '@angular/core';
+import { Http, Response } from '@angular/http'
+
+import { MapComponent } from '../components/map.component';
+import { CategoryFilterComponent } from '../components/categoryFilter.component';
+import { Item } from '../models/item';
+
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    templateUrl: './app.component.html'
 })
+
 
 export class AppComponent implements OnInit {
     constructor(private _httpService: Http) { }
-    values: any;
-    screenLatitude: number;
-    screenLongitude: number;
-    clickLatitude: number;
-    clickLongitude: number;
-    markers: any[] = [
-        {
-            latitude: 51,
-            longitude: 7.06
-        }
-    ]
+
+    @ViewChild(MapComponent) map: MapComponent
+    @ViewChild(CategoryFilterComponent) filter: CategoryFilterComponent
+
+    selectedItem: Item;
+
     ngOnInit() {
-        this._httpService.get('http://localhost:60289/api/webapi/').subscribe(values => {
-            console.log("Hello1");
-            this.values = values.json();
-            this.screenLatitude = this.values[0].latitude;
-            this.screenLongitude = this. values[0].longitude;
-        });
+        this._httpService.get('http://localhost:5000/api/webapi/')
+            .map((response: Response) => <Item[]>response.json())
+            .subscribe(items => {
+                this.map.setItems(items);
+                if (items.length > 0) {
+                    this.map.setScreenPosition(items[0]);
+                }
+            });
     }
-    mapClicked($event: any) {
+
+    onFilter() {
+        let category = this.filter.selectedCategoryId;
+        let subcategory = this.filter.selectedSubcategoryId;
+        let url = `${environment.apiUrl}/FilterObjects?category=${category}&subcategory=${subcategory}`;
+        this._httpService.get(url)
+            .map((response: Response) => <Item[]>response.json())
+            .subscribe(items => {
+                this.map.setItems(items);
+            });
+    }
+
+    mapClicked(event) {
         console.log("Hello1");
-        this.markers.push({
-            latitude: $event.coords.lat,
-            longitude: $event.coords.lng
-        });
-    }   
+    }
+
+    markerSelected(id) {
+        console.log(id);
+    }
 }

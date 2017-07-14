@@ -1,5 +1,5 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -8,17 +8,20 @@ import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { ButtonsModule } from 'ngx-bootstrap';
 
-import { CategoryComponent } from '../components/category.component'
-
+import { CategoryFilterComponent } from '../components/categoryFilter.component'
+import { MapComponent } from '../components/map.component'
 
 @NgModule({
   declarations: [
       AppComponent,
-      CategoryComponent
+      CategoryFilterComponent,
+      MapComponent
   ],
   imports: [
       BsDropdownModule.forRoot(),
+      ButtonsModule.forRoot(),
       BrowserModule,
       FormsModule,
       HttpModule,
@@ -27,6 +30,7 @@ import { CategoryComponent } from '../components/category.component'
       })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -1,0 +1,6 @@
+﻿<agm-map [latitude]="screenLatitude" [longitude]="screenLongitude" (mapClick)="mapClicked($event)">
+  <agm-marker *ngFor="let item of items" 
+              [latitude]="item.latitude" 
+              [longitude]="item.longitude"
+              (markerClick)="markerClicked(item.id)"></agm-marker>
+</agm-map>

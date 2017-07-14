@@ -1,7 +1,10 @@
-﻿<category></category>
-
-<agm-map [latitude]="screenLatitude" [longitude]="screenLongitude" (mapClick)="mapClicked($event)">
-  <agm-marker *ngFor="let value of values" [latitude]="value.latitude" [longitude]="value.longitude"></agm-marker>
-  <agm-marker *ngIf="clickLatitude" [latitude]="value.latitude" [longitude]="value.longitude"></agm-marker>
-  <agm-marker *ngFor="let m of markers" [latitude]="m.latitude" [longitude]="m.longitude"></agm-marker>
-</agm-map>
+﻿<category-filter></category-filter>
+<button type="button" class="btn btn-primary" (click)="onFilter()">Filter</button>
+<div class="row no-gutters">
+  <div class="col-sm-2">
+    Name: {{name}}
+  </div>
+  <div class="col">
+    <cool-map (markerSelected)="markerSelected($event)"></cool-map>
+  </div>
+</div>
