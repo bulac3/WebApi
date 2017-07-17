@@ -1,4 +1,7 @@
-﻿<agm-map [latitude]="screenLatitude" [longitude]="screenLongitude" (mapClick)="mapClicked($event)">
+﻿<agm-map [latitude]="screenLatitude" 
+         [longitude]="screenLongitude" 
+         [disableDoubleClickZoom]="true"
+         (mapDblClick)="mapDblClick($event)">
   <agm-marker *ngFor="let item of items" 
               [latitude]="item.latitude" 
               [longitude]="item.longitude"

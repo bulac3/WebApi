@@ -1,8 +1,12 @@
-﻿Category:
-<select [(ngModel)]="selectedCategoryId" (input)="onInputCategory($event)">
-  <option *ngFor="let category of categories" value={{category.id}}>{{category.name}}</option>
-</select>
-Subcategory:
-<select [(ngModel)]="selectedSubcategoryId" (input)="onInputSubcategory($event)">
-  <option *ngFor="let subcategory of subcategories" value={{subcategory.id}}>{{subcategory.name}}</option>
-</select>
+﻿<div class="form-group">
+  <label>Category:</label>
+  <select class="form-control" [(ngModel)]="selectedCategoryId" (input)="onInputCategory($event)">
+    <option *ngFor="let category of categories" value={{category.id}}>{{category.name}}</option>
+  </select>
+</div>
+<div class="form-group">
+  <label>Subcategory:</label>
+  <select class="form-control" [(ngModel)]="selectedSubcategoryId" (input)="onInputSubcategory($event)">
+    <option *ngFor="let subcategory of subcategories" value={{subcategory.id}}>{{subcategory.name}}</option>
+  </select>
+</div>

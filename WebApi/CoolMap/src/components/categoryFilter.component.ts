@@ -20,14 +20,6 @@ export class CategoryFilterComponent implements OnInit {
     subcategories: Subcategory[];
     selectedSubcategoryId: number;
 
-    public getCategoryId() {
-        return this.selectedCategoryId;
-    }
-
-    public getSubcategoryId() {
-        return this.selectedSubcategoryId;
-    }
-
     ngOnInit() {
         this._httpService.get(`${environment.apiUrl}/GetCategoryHierarchy`).subscribe(values => {
             this.categories = values.json();
@@ -47,7 +39,7 @@ export class CategoryFilterComponent implements OnInit {
         this.selectedSubcategoryId = $event.target.value;
     }
 
-    selectDefaultSubcategory() {
+    private selectDefaultSubcategory() {
         this.subcategories = this.categories.find(
             (category, num, array) => category.id == this.selectedCategoryId).subcategories;
         this.selectedSubcategoryId = this.subcategories[0].id;
