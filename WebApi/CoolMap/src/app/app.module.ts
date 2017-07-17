@@ -12,6 +12,7 @@ import { ButtonsModule } from 'ngx-bootstrap';
 
 import { CategoryFilterComponent } from '../components/categoryFilter.component'
 import { MapComponent } from '../components/map.component'
+import { ModalModule } from "ngx-bootstrap";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MapComponent } from '../components/map.component'
       MapComponent
   ],
   imports: [
+      ModalModule.forRoot(),
       BsDropdownModule.forRoot(),
       ButtonsModule.forRoot(),
       BrowserModule,

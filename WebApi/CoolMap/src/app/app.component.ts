@@ -6,30 +6,30 @@ import { CategoryFilterComponent } from '../components/categoryFilter.component'
 import { Item } from '../models/item';
 
 import { environment } from '../environments/environment';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
-
 
 export class AppComponent implements OnInit {
     constructor(private _httpService: Http) { }
 
     @ViewChild(MapComponent) map: MapComponent
     @ViewChild(CategoryFilterComponent) filter: CategoryFilterComponent
-
+    @ViewChild('childModal') childModal: ModalDirective;
     selectedItem: Item;
+    name: string = "";
 
     ngOnInit() {
-        this._httpService.get('http://localhost:5000/api/webapi/')
-            .map((response: Response) => <Item[]>response.json())
-            .subscribe(items => {
-                this.map.setItems(items);
-                if (items.length > 0) {
-                    this.map.setScreenPosition(items[0]);
-                }
-            });
+        this.onFilter();
+    }
+
+    onTest() {
+        this.name = "";
+        console.log(this.name);
     }
 
     onFilter() {
@@ -43,17 +43,39 @@ export class AppComponent implements OnInit {
             });
     }
 
-    mapClicked(event) {
-        console.log("Hello1");
-    }
-
-    markerSelected(id) {
+    itemSelected(id) {
         let url = `${environment.apiUrl}/${id}`;
         this._httpService.get(url)
             .map((response: Response) => <Item>response.json())
-            .subscribe(item => {
+            .subscribe(item => {                
                 this.selectedItem = item;
             });
     }
-    
+
+    selectNewItemCoords(event) {
+        let latitude = event.coords.lat;
+        let longitude = event.coords.lng;
+        this.childModal.show();
+        console.log(latitude, longitude);
+    }
+
+    showChildModal() {        
+        this.childModal.show();
+    }
+
+    hideChildModal() {        
+        this.childModal.hide();
+    }
+
+    addItem(name, description) {
+        //this._httpService.get(url)
+        //    .map((response: Response) => <Item[]>response.json())
+        //    .subscribe(items => {
+        //        this.map.setItems(items);
+        //    });
+
+
+
+        this.childModal.hide();
+    }
 }

@@ -1,4 +1,4 @@
-﻿import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+﻿import { Component, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http'
 
 import { environment } from '../environments/environment';
@@ -13,38 +13,31 @@ import { Item } from '../models/item';
     styleUrls: ['./map.component.css']
 })
 
-export class MapComponent implements OnInit {
+export class MapComponent {
 
     constructor(private _httpService: Http) { }
 
-    screenLatitude: number;
-    screenLongitude: number;
-    clickLatitude: number;
-    clickLongitude: number;
-    items: Item[];
+    private screenLatitude: number;
+    private screenLongitude: number;
+    private items: Item[];
 
-    @Output() markerSelected = new EventEmitter();
+    @Output() markerSelectedEvent = new EventEmitter();
+    @Output() selectCoors = new EventEmitter();
 
-    setItems(newItems: Item[]) {
+    public setItems(newItems: Item[]) {
         this.items = newItems;
+        if (newItems.length > 0) {
+            this.screenLatitude = newItems[0].latitude;
+            this.screenLongitude = newItems[0].longitude;
+        }
     }
 
-    setScreenPosition(item: Item) {
-        this.screenLatitude = item.latitude;
-        this.screenLongitude = item.longitude;
+    private markerClicked(id) {        
+        this.markerSelectedEvent.emit(id);
     }
 
-    ngOnInit() {
-
-    }
-
-    mapClicked(event) {
-        console.log("asd");
-  
-    }   
-
-    markerClicked(id) {        
-        this.markerSelected.emit(id);
+    private mapDblClick(event) {
+        this.selectCoors.emit(event);
     }
 
 }

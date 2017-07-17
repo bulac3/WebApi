@@ -15,12 +15,13 @@ export class CategoryFilterComponent implements OnInit {
 
     constructor(private _httpService: Http) { }
 
-    categories: Category[];
-    selectedCategoryId: number;
-    subcategories: Subcategory[];
-    selectedSubcategoryId: number;
+    public selectedCategoryId: number;
+    public selectedSubcategoryId: number;
 
-    ngOnInit() {
+    private categories: Category[];
+    private subcategories: Subcategory[];
+
+    public ngOnInit() {
         this._httpService.get(`${environment.apiUrl}/GetCategoryHierarchy`).subscribe(values => {
             this.categories = values.json();
             this.selectedCategoryId = this.categories[0].id;
@@ -28,13 +29,13 @@ export class CategoryFilterComponent implements OnInit {
         });
     }
 
-    onInputCategory($event) {
+    private onInputCategory($event) {
         $event.preventDefault();
         this.selectedCategoryId = $event.target.value;
         this.selectDefaultSubcategory();
     }
 
-    onInputSubcategory($event) {
+    private onInputSubcategory($event) {
         $event.preventDefault();
         this.selectedSubcategoryId = $event.target.value;
     }

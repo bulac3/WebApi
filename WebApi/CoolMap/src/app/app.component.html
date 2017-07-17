@@ -1,5 +1,7 @@
 ﻿<category-filter></category-filter>
 <button type="button" class="btn btn-primary" (click)="onFilter()">Filter</button>
+<button type="button" class="btn btn-primary" (click)="showChildModal()">Open child modal</button>
+
 <div class="row no-gutters">
   <div class="col-sm-3">
     <b>Name:</b> <span *ngIf="selectedItem !== undefined">{{selectedItem.name}}</span>
@@ -7,6 +9,33 @@
     <b>Description:</b> <span *ngIf="selectedItem !== undefined">{{selectedItem.description}}</span>
   </div>
   <div class="col">
-    <cool-map (markerSelected)="markerSelected($event)"></cool-map>
+    <cool-map (markerSelectedEvent)="itemSelected($event)"
+              (selectCoors)="selectNewItemCoords($event)"></cool-map>
   </div>
 </div>
+
+<div bsModal #childModal="bs-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Add item to map</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" class="form-control" #name>
+        </div>
+        <div class="form-group">
+          <label>Description:</label>
+          <textarea class="form-control" #description></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)='addItem(name.value, description.value)'>Add</button>
+        <button type="submit" class="btn btn-primary" (click)='hideChildModal()'>Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
