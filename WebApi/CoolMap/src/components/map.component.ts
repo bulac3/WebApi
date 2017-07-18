@@ -13,9 +13,7 @@ import { Item } from '../models/item';
 })
 
 export class MapComponent {
-
-    constructor(private _httpService: Http) { }
-
+    
     private screenLatitude: number;
     private screenLongitude: number;
     private items: Item[];

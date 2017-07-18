@@ -7,10 +7,10 @@ import { itemService } from '../services/item.service';
 
 @Component({
     selector: 'category-filter',
-    templateUrl: './categoryFilter.component.html'
+    templateUrl: './filter.component.html'
 })
 
-export class CategoryFilterComponent implements OnInit {
+export class FilterComponent implements OnInit {
 
     constructor(private _itemService: itemService) { }
 

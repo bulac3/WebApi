@@ -2,7 +2,7 @@
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { MapComponent } from '../components/map.component';
-import { CategoryFilterComponent } from '../components/categoryFilter.component';
+import { FilterComponent } from '../components/filter.component';
 import { Item } from '../models/item';
 import { environment } from '../environments/environment';
 import { itemService } from '../services/item.service';  
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     constructor(private _itemService: itemService) { }
 
     @ViewChild(MapComponent) map: MapComponent
-    @ViewChild(CategoryFilterComponent) filter: CategoryFilterComponent
+    @ViewChild(FilterComponent) filter: FilterComponent
     @ViewChild('childModal') childModal: ModalDirective;
     selectedItem: Item;
     name: string = "";

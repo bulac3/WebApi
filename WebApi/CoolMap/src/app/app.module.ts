@@ -10,14 +10,14 @@ import { AgmCoreModule } from '@agm/core';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap';
 
-import { CategoryFilterComponent } from '../components/categoryFilter.component'
+import { FilterComponent } from '../components/filter.component'
 import { MapComponent } from '../components/map.component'
 import { ModalModule } from "ngx-bootstrap";
 
 @NgModule({
   declarations: [
       AppComponent,
-      CategoryFilterComponent,
+      FilterComponent,
       MapComponent
   ],
   imports: [
