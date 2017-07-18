@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
 import { itemService } from '../services/item.service'; 
 
 @Component({
-    selector: 'category-filter',
+    selector: 'filter',
     templateUrl: './filter.component.html'
 })
 
