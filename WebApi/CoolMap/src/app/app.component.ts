@@ -1,21 +1,21 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
-import { Http, Response } from '@angular/http'
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { MapComponent } from '../components/map.component';
 import { CategoryFilterComponent } from '../components/categoryFilter.component';
 import { Item } from '../models/item';
-
 import { environment } from '../environments/environment';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { itemService } from '../services/item.service';  
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    providers: [itemService] 
 })
 
 export class AppComponent implements OnInit {
-    constructor(private _httpService: Http) { }
+    constructor(private _itemService: itemService) { }
 
     @ViewChild(MapComponent) map: MapComponent
     @ViewChild(CategoryFilterComponent) filter: CategoryFilterComponent
@@ -23,51 +23,38 @@ export class AppComponent implements OnInit {
     selectedItem: Item;
     name: string = "";
 
-    ngOnInit() {
+    public ngOnInit() {
         this.onFilter();
     }
 
-    onTest() {
-        this.name = "";
-        console.log(this.name);
-    }
-
-    onFilter() {
+    private onFilter(): void {
         let category = this.filter.selectedCategoryId;
         let subcategory = this.filter.selectedSubcategoryId;
-        let url = `${environment.apiUrl}/FilterObjects?category=${category}&subcategory=${subcategory}`;
-        this._httpService.get(url)
-            .map((response: Response) => <Item[]>response.json())
-            .subscribe(items => {
-                this.map.setItems(items);
-            });
+        this._itemService.FilterObjects(category, subcategory)
+            .subscribe(items => this.map.setItems(items));
     }
 
-    itemSelected(id) {
-        let url = `${environment.apiUrl}/${id}`;
-        this._httpService.get(url)
-            .map((response: Response) => <Item>response.json())
-            .subscribe(item => {                
-                this.selectedItem = item;
-            });
+    private itemSelected(id): void {
+        this._itemService.GetItem(id)
+            .subscribe(item => this.selectedItem = item);
     }
 
-    selectNewItemCoords(event) {
+    private selectNewItemCoords(event) {
         let latitude = event.coords.lat;
         let longitude = event.coords.lng;
         this.childModal.show();
         console.log(latitude, longitude);
     }
 
-    showChildModal() {        
+    private showChildModal() {        
         this.childModal.show();
     }
 
-    hideChildModal() {        
+    private hideChildModal() {        
         this.childModal.hide();
     }
 
-    addItem(name, description) {
+    private addItem(name, description) {
         //this._httpService.get(url)
         //    .map((response: Response) => <Item[]>response.json())
         //    .subscribe(items => {

@@ -1,5 +1,4 @@
 ﻿import { Component, Output, EventEmitter } from '@angular/core';
-import { Http } from '@angular/http'
 
 import { environment } from '../environments/environment';
 
