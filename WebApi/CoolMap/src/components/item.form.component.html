@@ -1,0 +1,32 @@
+﻿{{diagnostic}}
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" required [(ngModel)]="model.name" name="name">
+  </div>
+  <div class="form-group">
+    <label>Description:</label>
+    <textarea class="form-control" required [(ngModel)]="model.description" 
+              name="description"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Category:</label>
+    <select class="form-control" required [(ngModel)]="categoryId" name="categoryId">
+      <option *ngFor="let category of categories"value={{category.id}}>
+        {{category.name}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Subcategory:</label>
+    <select class="form-control" required [(ngModel)]="model.subcategoryId" name="subcategoryId">
+      <ng-container *ngIf="categories && categoryId">
+        <option *ngFor="let subcategory of categories[categoryId].subcategories"
+                value={{subcategory.id}}>
+          {{subcategory.name}}
+        </option>
+      </ng-container>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!itemForm.form.valid">Submit</button>
+</form>

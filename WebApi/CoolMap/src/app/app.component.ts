@@ -3,6 +3,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { MapComponent } from '../components/map.component';
 import { FilterComponent } from '../components/filter.component';
+import { ItemFormComponent } from '../components/item.form.component';
 import { Item } from '../models/item';
 import { environment } from '../environments/environment';
 import { itemService } from '../services/item.service';  
@@ -18,8 +19,10 @@ export class AppComponent implements OnInit {
     constructor(private _itemService: itemService) { }
 
     @ViewChild(MapComponent) map: MapComponent
-    @ViewChild(FilterComponent) filter: FilterComponent
+    @ViewChild(FilterComponent) filter: FilterComponent    
+    @ViewChild(ItemFormComponent) itemForm: ItemFormComponent    
     @ViewChild('childModal') childModal: ModalDirective;
+
     selectedItem: Item;
     name: string = "";
 
@@ -42,7 +45,7 @@ export class AppComponent implements OnInit {
     private selectNewItemCoords(event) {
         let latitude = event.coords.lat;
         let longitude = event.coords.lng;
-        this.childModal.show();
+        //this.childModal.show();
         console.log(latitude, longitude);
     }
 

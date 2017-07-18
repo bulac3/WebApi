@@ -2,23 +2,25 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AgmCoreModule } from '@agm/core';
 
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap';
+import { ModalModule } from "ngx-bootstrap";
 
 import { FilterComponent } from '../components/filter.component'
 import { MapComponent } from '../components/map.component'
-import { ModalModule } from "ngx-bootstrap";
+import { ItemFormComponent } from '../components/item.form.component';
 
 @NgModule({
   declarations: [
       AppComponent,
       FilterComponent,
-      MapComponent
+      MapComponent,
+      ItemFormComponent
   ],
   imports: [
       ModalModule.forRoot(),
@@ -26,7 +28,8 @@ import { ModalModule } from "ngx-bootstrap";
       ButtonsModule.forRoot(),
       BrowserModule,
       FormsModule,
-      HttpModule,
+      ReactiveFormsModule,
+      HttpModule,      
       AgmCoreModule.forRoot({
           apiKey: 'AIzaSyD9enOBFYGT_bfK0pgAaSx_K5XAU5XYdgU'
       })
