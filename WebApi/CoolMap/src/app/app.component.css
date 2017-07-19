@@ -1,8 +1,9 @@
-﻿.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
+﻿.container-full {
+  margin: 0 auto;
+  width: 100%;
 }
-.no-gutters  {
-  padding-right: 0;
-  padding-left: 0;
+
+.no-gutters > div[class^="col"] {
+  padding-left: 0px;
+  padding-right: 0px;
 }
