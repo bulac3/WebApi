@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
     private onFilter(): void {
         let options = this.filter.getFilterOptions();
         this.map.filterObjects(options);
+        this.selectedItem = undefined;
     }
 
     private itemSelected(item: Item): void {
