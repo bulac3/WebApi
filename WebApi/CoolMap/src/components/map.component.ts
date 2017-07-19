@@ -38,8 +38,8 @@ export class MapComponent {
             .subscribe(items => this.setItems(items));
     }
 
-    private markerClicked(id) {        
-        this.markerSelectedEvent.emit(id);
+    private markerClicked(item) {        
+        this.markerSelectedEvent.emit(item);
     }
 
     private mapDblClick(event) {

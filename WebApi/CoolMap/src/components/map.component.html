@@ -5,5 +5,5 @@
   <agm-marker *ngFor="let item of items" 
               [latitude]="item.latitude" 
               [longitude]="item.longitude"
-              (markerClick)="markerClicked(item.id)"></agm-marker>
+              (markerClick)="markerClicked(item)"></agm-marker>
 </agm-map>

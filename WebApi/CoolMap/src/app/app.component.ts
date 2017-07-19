@@ -35,9 +35,8 @@ export class AppComponent implements OnInit {
         this.map.filterObjects(options);
     }
 
-    private itemSelected(id): void {
-        this._itemService.GetItem(id)
-            .subscribe(item => this.selectedItem = item);
+    private itemSelected(item: Item): void {
+        this.selectedItem = item;
     }
 
     private selectNewItemCoords(coords) {
