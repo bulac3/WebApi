@@ -31,10 +31,8 @@ export class AppComponent implements OnInit {
     }
 
     private onFilter(): void {
-        let category = this.filter.selectedCategoryId;
-        let subcategory = this.filter.selectedSubcategoryId;
-        this._itemService.FilterObjects(category, subcategory)
-            .subscribe(items => this.map.setItems(items));
+        let options = this.filter.getFilterOptions();
+        this.map.filterObjects(options);
     }
 
     private itemSelected(id): void {
@@ -42,10 +40,8 @@ export class AppComponent implements OnInit {
             .subscribe(item => this.selectedItem = item);
     }
 
-    private selectNewItemCoords(event) {
-        let latitude = event.coords.lat;
-        let longitude = event.coords.lng;
-        this.newItemCoords = { latitude: latitude, longitude: longitude };
+    private selectNewItemCoords(coords) {
+        this.newItemCoords = coords;
         this.itemForm.show();
     }    
 
