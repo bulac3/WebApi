@@ -44,7 +44,7 @@ export class MapComponent {
 
     private mapDblClick(event) {
         let coords: Coords = { latitude: event.coords.lat, longitude: event.coords.lng };
-        this.selectCoords.emit(event);
+        this.selectCoords.emit(coords);
     }
 
 }
