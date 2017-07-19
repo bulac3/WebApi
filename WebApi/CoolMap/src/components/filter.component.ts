@@ -16,11 +16,12 @@ export class FilterComponent implements OnInit {
     constructor(private _itemService: itemService) { }
 
     public filterOptions: Coords;
-
-    private categories: Category[];
-    private subcategories: Subcategory[];
     public selectedCategoryId: number;
     public selectedSubcategoryId: number;
+    private categories: Category[];
+    private subcategories: Subcategory[];
+    
+    @Output() filter = new EventEmitter();
 
     public ngOnInit(): void {
         this._itemService.GetCategoryHierarchy()
@@ -33,6 +34,11 @@ export class FilterComponent implements OnInit {
         this.subcategories = this.categories.find(
             (category, num, array) => category.id == this.selectedCategoryId).subcategories;
         this.selectedSubcategoryId = this.subcategories[0].id;
+        this.filter.emit(this.getFilterOptions());
+    }
+
+    private subcategoryChange(categoryId: number): void {
+        this.filter.emit(this.getFilterOptions());
     }
 
     public getFilterOptions(): FilterOptions {

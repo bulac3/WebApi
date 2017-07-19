@@ -1,16 +1,4 @@
-﻿<filter></filter>
-<button type="button" class="btn btn-primary" (click)="onFilter()">Filter</button>
-<div class="container container-full">
-  <div class="row no-gutters">
-    <div class="col-sm-3">
-      <b>Name:</b> <span *ngIf="selectedItem !== undefined">{{selectedItem.name}}</span>
-      <hr>
-      <b>Description:</b> <span *ngIf="selectedItem !== undefined">{{selectedItem.description}}</span>
-    </div>
-    <div class="col-md-auto">
-      <cool-map (markerSelectedEvent)="itemSelected($event)"
-                (selectCoords)="selectNewItemCoords($event)"></cool-map>
-    </div>
-  </div>
-</div>
+﻿<filter (filter)=onFilter()></filter>
+<cool-map (markerSelectedEvent)="itemSelected($event)"
+          (selectCoords)="selectNewItemCoords($event)"></cool-map>
 <item-form (onSubmitEvent)="onSubmit()" [(coords)]="newItemCoords"></item-form>
