@@ -14,20 +14,5 @@
   </div>
 </div>
 
-<div bsModal #childModal="bs-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Add item to map</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <item-form></item-form>
-        <!--<button type="submit" class="btn btn-primary" (click)='hideChildModal()'>Cancel</button>-->
-      </div>
-    </div>
-  </div>
-</div>
+<item-form [(coords)]="newItemCoords"></item-form>
 

@@ -5,6 +5,7 @@ import { MapComponent } from '../components/map.component';
 import { FilterComponent } from '../components/filter.component';
 import { ItemFormComponent } from '../components/item.form.component';
 import { Item } from '../models/item';
+import { Coords } from '../models/coords';
 import { environment } from '../environments/environment';
 import { itemService } from '../services/item.service';  
 
@@ -21,11 +22,10 @@ export class AppComponent implements OnInit {
     @ViewChild(MapComponent) map: MapComponent
     @ViewChild(FilterComponent) filter: FilterComponent    
     @ViewChild(ItemFormComponent) itemForm: ItemFormComponent    
-    @ViewChild('childModal') childModal: ModalDirective;
-
-    selectedItem: Item;
-    name: string = "";
-
+    
+    private selectedItem: Item;
+    private newItemCoords: Coords;
+    
     public ngOnInit() {
         this.onFilter();
     }
@@ -45,27 +45,7 @@ export class AppComponent implements OnInit {
     private selectNewItemCoords(event) {
         let latitude = event.coords.lat;
         let longitude = event.coords.lng;
-        //this.childModal.show();
-        console.log(latitude, longitude);
-    }
-
-    private showChildModal() {        
-        this.childModal.show();
-    }
-
-    private hideChildModal() {        
-        this.childModal.hide();
-    }
-
-    private addItem(name, description) {
-        //this._httpService.get(url)
-        //    .map((response: Response) => <Item[]>response.json())
-        //    .subscribe(items => {
-        //        this.map.setItems(items);
-        //    });
-
-
-
-        this.childModal.hide();
-    }
+        this.newItemCoords = { latitude: latitude, longitude: longitude };
+        this.itemForm.show();
+    }    
 }
