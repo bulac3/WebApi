@@ -8,6 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <label *ngIf="errorMessage" for="name" class="text-danger">{{errorMessage}}</label>
         <form #itemForm="ngForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="name">Name</label>
@@ -20,7 +21,8 @@
           </div>
           <div class="form-group">
             <label>Category:</label>
-            <select class="form-control" required [(ngModel)]="categoryId" name="categoryId">
+            <select class="form-control" required [(ngModel)]="categoryId" name="categoryId"
+                    (change)="onCategoryChange(categoryId)">
               <option *ngFor="let category of categories" value={{category.id}}>
                 {{category.name}}
               </option>
@@ -28,13 +30,12 @@
           </div>
           <div class="form-group">
             <label>Subcategory:</label>
-            <select class="form-control" required [(ngModel)]="model.subcategoryId" name="subcategoryId">
-              <ng-container *ngIf="categories && categoryId && categories[categoryId]">
-                <option *ngFor="let subcategory of categories[categoryId].subcategories"
+            <select class="form-control" required [(ngModel)]="model.subcategoryId" 
+                    name="subcategoryId">
+                <option *ngFor="let subcategory of subcategories"
                         value={{subcategory.id}}>
                   {{subcategory.name}}
                 </option>
-              </ng-container>
             </select>
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="!itemForm.form.valid">Submit</button>

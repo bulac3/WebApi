@@ -20,11 +20,14 @@ export class ItemFormComponent implements OnInit {
     constructor(private _itemService: itemService) {}
 
     private categories: Category[];
+    private subcategories: Subcategory[];
     private model = new Item();
+    private errorMessage: string;
 
     @ViewChild('itemForm') itemForm: NgForm;
     @ViewChild('childModal') childModal: ModalDirective;
     @Input() coords: Coords;
+    @Output() onSubmitEvent = new EventEmitter();
 
     public ngOnInit(): void {
         this._itemService.GetCategoryHierarchy()
@@ -34,15 +37,31 @@ export class ItemFormComponent implements OnInit {
     public show(): void {
         this.model = new Item();
         this.itemForm.reset();
+        this.errorMessage = "";
+        this.subcategories = [];
         this.childModal.show();
     }
 
     public hide(): void {
         this.childModal.hide();
     }
-    
+
+    private onCategoryChange(categoryId) {
+        this.subcategories = this.subcategories = this.categories.find(
+            (category, num, array) => category.id == categoryId).subcategories;
+    }
+
     private onSubmit() {
-        this.childModal.hide();
+        let newItem = this.model;
+        newItem.latitude = this.coords.latitude;
+        newItem.longitude = this.coords.longitude;
+        this._itemService.AddItem(newItem).subscribe(
+            result => {
+                  this.childModal.hide();
+                  this.onSubmitEvent.emit();
+                },
+            error => this.errorMessage = error
+        );
     }
 
 }

@@ -22,11 +22,11 @@ export class MapComponent {
     @Output() selectCoors = new EventEmitter();
 
     public setItems(newItems: Item[]) {
-        this.items = newItems;
-        if (newItems.length > 0) {
+        if (newItems.length > 0 && this.screenLatitude == null) {
             this.screenLatitude = newItems[0].latitude;
             this.screenLongitude = newItems[0].longitude;
         }
+        this.items = newItems;
     }
 
     private markerClicked(id) {        

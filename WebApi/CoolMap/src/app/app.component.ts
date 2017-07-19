@@ -48,4 +48,8 @@ export class AppComponent implements OnInit {
         this.newItemCoords = { latitude: latitude, longitude: longitude };
         this.itemForm.show();
     }    
+
+    private onSubmit() {
+        this.onFilter();
+    }
 }
