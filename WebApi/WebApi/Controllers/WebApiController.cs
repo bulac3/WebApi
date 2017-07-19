@@ -40,7 +40,7 @@ namespace WebApi.Controllers
                 return _context.Items.Where(i => i.Subcategory.CategoryId == category).ToList();
             }
 
-            return _context.Items.ToList();
+            return new List<Item>();
         }
 
         [HttpGet("GetCategoryHierarchy")]
