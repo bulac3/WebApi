@@ -27,7 +27,7 @@ export class ItemFormComponent implements OnInit {
     @ViewChild('itemForm') itemForm: NgForm;
     @ViewChild('childModal') childModal: ModalDirective;
     @Input() coords: Coords;
-    @Output() onSubmitEvent = new EventEmitter();
+    @Output() onClose = new EventEmitter();
 
     public ngOnInit(): void {
         this._itemService.GetCategoryHierarchy()
@@ -36,14 +36,10 @@ export class ItemFormComponent implements OnInit {
 
     public show(): void {
         this.model = new Item();
-        this.itemForm.reset();
-        this.errorMessage = "";
-        this.subcategories = [];
-        this.childModal.show();
     }
 
     public hide(): void {
-        this.childModal.hide();
+        this.onClose.emit();
     }
 
     private onCategoryChange(categoryId) {
@@ -58,7 +54,7 @@ export class ItemFormComponent implements OnInit {
         this._itemService.AddItem(newItem).subscribe(
             result => {
                   this.childModal.hide();
-                  this.onSubmitEvent.emit();
+                  this.onClose.emit();
                 },
             error => this.errorMessage = error
         );

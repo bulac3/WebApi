@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
     @ViewChild(FilterComponent) filter: FilterComponent    
     @ViewChild(ItemFormComponent) itemForm: ItemFormComponent    
     
-    private selectedItem: Item;
     private newItemCoords: Coords;
     
     public ngOnInit() {
@@ -33,19 +32,14 @@ export class AppComponent implements OnInit {
     private onFilter(): void {
         let options = this.filter.getFilterOptions();
         this.map.filterObjects(options);
-        this.selectedItem = undefined;
-    }
-
-    private itemSelected(item: Item): void {
-        this.selectedItem = item;
     }
 
     private selectNewItemCoords(coords) {
         this.newItemCoords = coords;
-        this.itemForm.show();
     }    
 
-    private onSubmit() {
+    private onModalClose() {
         this.onFilter();
+        this.newItemCoords = undefined;
     }
 }

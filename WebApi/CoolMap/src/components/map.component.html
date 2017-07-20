@@ -4,6 +4,8 @@
          (mapDblClick)="mapDblClick($event)">
   <agm-marker *ngFor="let item of items" 
               [latitude]="item.latitude" 
-              [longitude]="item.longitude"
-              (markerClick)="markerClicked(item)"></agm-marker>
+              [longitude]="item.longitude">
+    <agm-info-window [disableAutoPan]="true"><b>Name:</b> {{item.name}}
+        <br> <b>Description:</b> {{item.description}}</agm-info-window>
+  </agm-marker>
 </agm-map>

@@ -1,4 +1,4 @@
-﻿<filter (filter)=onFilter()></filter>
-<cool-map (markerSelectedEvent)="itemSelected($event)"
-          (selectCoords)="selectNewItemCoords($event)"></cool-map>
-<item-form (onSubmitEvent)="onSubmit()" [(coords)]="newItemCoords"></item-form>
+﻿<h1>{{appTitle}}</h1>
+<filter (filter)=onFilter()></filter>
+<cool-map (selectCoords)="selectNewItemCoords($event)"></cool-map>
+<item-form *ngIf="newItemCoords" (onClose)="onModalClose()" [(coords)]="newItemCoords"></item-form>
