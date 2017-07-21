@@ -8,7 +8,8 @@ import { environment } from '../environments/environment';
 import { itemService } from '../services/item.service'; 
 @Component({
     selector: 'filter',
-    templateUrl: './filter.component.html'
+    templateUrl: './filter.component.html',
+    styleUrls: ['./filter.component.css']
 })
 
 export class FilterComponent implements OnInit {
